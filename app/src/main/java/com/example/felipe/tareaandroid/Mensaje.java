@@ -71,12 +71,11 @@ public class Mensaje extends AppCompatActivity {
         Cmensaje.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View view) {
-                        //button.setEnabled(false);
                         Cmensaje.setEnabled(false);
                         GsonRequest<Post> gsonRequest = new GsonRequest(
                                 "https://jsonplaceholder.typicode.com/posts/1",//URL
                                 Post.class,//Clase a la que se convertira el JSON
-                                null,//encabezado no necesitamos
+                                null,
                                 createRequestSuccessListener(),//listener
                                 createRequestErrorListener()//listener
                         );
@@ -87,12 +86,11 @@ public class Mensaje extends AppCompatActivity {
         Cmensaje2.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View view) {
-                        //button.setEnabled(false);
                         Cmensaje2.setEnabled(false);
                         GsonRequest<Post> gsonRequest = new GsonRequest(
                                 "https://jsonplaceholder.typicode.com/posts/2",//URL
                                 Post.class,//Clase a la que se convertira el JSON
-                                null,//encabezado no necesitamos
+                                null,
                                 createRequestSuccessListener2(),//listener
                                 createRequestErrorListener()//listener
                         );
@@ -103,12 +101,11 @@ public class Mensaje extends AppCompatActivity {
         Cmensaje3.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View view) {
-                        //button.setEnabled(false);
                         Cmensaje3.setEnabled(false);
                         GsonRequest<Post> gsonRequest = new GsonRequest(
                                 "https://jsonplaceholder.typicode.com/posts/3",//URL
                                 Post.class,//Clase a la que se convertira el JSON
-                                null,//encabezado no necesitamos
+                                null,
                                 createRequestSuccessListener3(),//listener
                                 createRequestErrorListener()//listener
                         );
@@ -119,12 +116,11 @@ public class Mensaje extends AppCompatActivity {
         Cmensaje4.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View view) {
-                        //button.setEnabled(false);
                         Cmensaje4.setEnabled(false);
                         GsonRequest<Post> gsonRequest = new GsonRequest(
                                 "https://jsonplaceholder.typicode.com/posts/4",//URL
                                 Post.class,//Clase a la que se convertira el JSON
-                                null,//encabezado no necesitamos
+                                null,
                                 createRequestSuccessListener4(),//listener
                                 createRequestErrorListener()//listener
                         );
@@ -135,12 +131,11 @@ public class Mensaje extends AppCompatActivity {
         Cmensaje5.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View view) {
-                        //button.setEnabled(false);
                         Cmensaje5.setEnabled(false);
                         GsonRequest<Post> gsonRequest = new GsonRequest(
                                 "https://jsonplaceholder.typicode.com/posts/5",//URL
                                 Post.class,//Clase a la que se convertira el JSON
-                                null,//encabezado no necesitamos
+                                null,
                                 createRequestSuccessListener5(),//listener
                                 createRequestErrorListener()//listener
                         );
@@ -154,12 +149,10 @@ public class Mensaje extends AppCompatActivity {
             @Override
             public void onResponse(Post response) {
                 try {
-
                     Cmensaje.setEnabled(true);
-                    //el post obtenido del REST se llena en la interfaz
+                    //el post obtenido del REST se llena en la interfasz
                     textView2.setText(response.getTitle());
                     textView3.setText(response.getBody());
-
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -173,12 +166,10 @@ public class Mensaje extends AppCompatActivity {
             @Override
             public void onResponse(Post response) {
                 try {
-
                     Cmensaje2.setEnabled(true);
                     //el post obtenido del REST se llena en la interfaz
                     textView4.setText(response.getTitle());
                     textView5.setText(response.getBody());
-
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -192,12 +183,10 @@ public class Mensaje extends AppCompatActivity {
             @Override
             public void onResponse(Post response) {
                 try {
-
                     Cmensaje2.setEnabled(true);
                     //el post obtenido del REST se llena en la interfaz
                     textView6.setText(response.getTitle());
                     textView7.setText(response.getBody());
-
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -211,12 +200,10 @@ public class Mensaje extends AppCompatActivity {
             @Override
             public void onResponse(Post response) {
                 try {
-
                     Cmensaje2.setEnabled(true);
                     //el post obtenido del REST se llena en la interfaz
                     textView8.setText(response.getTitle());
                     textView9.setText(response.getBody());
-
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -230,12 +217,10 @@ public class Mensaje extends AppCompatActivity {
             @Override
             public void onResponse(Post response) {
                 try {
-
                     Cmensaje2.setEnabled(true);
                     //el post obtenido del REST se llena en la interfaz
                     textView10.setText(response.getTitle());
                     textView11.setText(response.getBody());
-
 
                 } catch (Exception e) {
                     e.printStackTrace();

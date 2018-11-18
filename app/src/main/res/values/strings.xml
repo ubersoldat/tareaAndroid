@@ -24,45 +24,19 @@
         <item>Maxime_Nienow</item>
         <item>Delphine</item>
         <item>Moriah.Stanton</item>
-        <item>Juan</item>
-        <item>Lisa</item>
-        <item>Roberto</item>
-        <item>Ángela</item>
-        <item>Brian</item>
-        <item>Emilio</item>
-        <item>Bárbara</item>
-        <item>Estefanía</item>
-        <item>Mateo</item>
-        <item>Nicole</item>
-        <item>José</item>
-        <item>Jessica</item>
-        <item>Daniel</item>
-        <item>Elizabeth</item>
-        <item>Kevin</item>
-        <item>Rebeca</item>
-        <item>Enrique</item>
-        <item>Kelly</item>
-        <item>Jeffrey</item>
-        <item>Mary</item>
-        <item>Ricardo</item>
-        <item>Christina</item>
-        <item>Scott</item>
-        <item>Amanda</item>
-        <item>Mark</item>
-        <item>Julie</item>
-        <item>Tomás</item>
-        <item>Laura</item>
-        <item>Tadeo</item>
-        <item>Shannon</item>
-        <item>Anthony</item>
-        <item>Christine</item>
-        <item>Carlos</item>
-        <item>Tamara</item>
-        <item>Joshua</item>
-        <item>Tracy</item>
-        <item>Ryan</item>
-        <item>Karen</item>
-        <item>Jeremy</item>
-        <item>Daniel</item>
     </string-array>
+
+    <string-array name="numeros_array">
+        <item>1-770-736-8031 x56442</item>
+        <item>010-692-6593 x09125</item>
+        <item>1-463-123-4447</item>
+        <item>493-170-9623 x156</item>
+        <item>(254)954-1289</item>
+        <item>1-477-935-8478 x6430</item>
+        <item>210.067.6132</item>
+        <item>586.493.6943 x140</item>
+        <item>(775)976-6794 x41206</item>
+        <item>024-648-3804</item>
+    </string-array>
+
 </resources>

@@ -4,7 +4,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="padding">16dp</dimen>
-    <dimen name="text_size">32sp</dimen>
+    <dimen name="text_size">23dp</dimen>
     <dimen name="initial_size">100sp</dimen>
     <!-- La agregegue yo. -->
     <dimen name="posicionCard">430dp</dimen>

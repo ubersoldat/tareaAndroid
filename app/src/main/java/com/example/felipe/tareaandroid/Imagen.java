@@ -97,8 +97,7 @@ public class Imagen extends AppCompatActivity {
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 } finally {
-                                    //Finalmente si hemos cargado datos en el Dataset
-                                    // entonces refrescamos
+                                    //se cargan los datos en el Dataset y despues refrescamos
                                     if (myDataset.size() > 0)
                                         refreshDataset();
                                 }

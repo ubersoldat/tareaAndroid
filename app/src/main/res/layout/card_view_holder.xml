@@ -2,6 +2,7 @@
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -23,13 +24,13 @@
         <TextView
             android:id="@+id/initial"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/posicionCard"
+            android:layout_height="408dp"
             android:gravity="center"
             android:textColor="@android:color/white"
             android:textSize="@dimen/initial_size"
             android:transitionName="initial_transition" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/white"
@@ -44,12 +45,34 @@
 
             <TextView
                 android:id="@+id/name"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:transitionName="name_transition"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="2dp"
+                android:layout_toEndOf="@+id/delete_button"
                 android:textColor="@android:color/black"
-                android:textSize="@dimen/text_size" />
-        </LinearLayout>
+                android:textSize="@dimen/text_size"
+                android:transitionName="name_transition" />
+
+            <TextView
+                android:id="@+id/numero"
+                android:layout_width="250dp"
+                android:layout_height="45dp"
+                android:layout_below="@+id/name"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginRight="9dp"
+                android:layout_toEndOf="@+id/delete_button"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size"
+                android:transitionName="numero_transition" />
+        </RelativeLayout>
 
     </LinearLayout>
 

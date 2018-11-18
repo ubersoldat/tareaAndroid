@@ -32,11 +32,18 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
+
         String name = cardsList.get(position).getName();
+        String numero = cardsList.get(position).getNumero();
         int color = cardsList.get(position).getColorResource();
+
         TextView initial = viewHolder.initial;
         TextView nameTextView = viewHolder.name;
+        TextView numeroTextView = viewHolder.numero;
+
         nameTextView.setText(name);
+        numeroTextView.setText(numero);
+
         initial.setBackgroundColor(color);
         initial.setText(Character.toString(name.charAt(0)));
     }
@@ -86,9 +93,10 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.ViewHold
         animation.start();
     }
 
-    public void addCard(String name, int color) {
+    public void addCard(String name, String numero, int color) {
         Card card = new Card();
         card.setName(name);
+        card.setNumero(numero);
         card.setColorResource(color);
         card.setId(getItemCount());
         cardsList.add(card);
@@ -96,8 +104,9 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.ViewHold
         notifyItemInserted(getItemCount());
     }
 
-    public void updateCard(String name, int list_position) {
+    public void updateCard(String name, String numero, int list_position) {
         cardsList.get(list_position).setName(name);
+        cardsList.get(list_position).setNumero(numero);
         Log.d(DEBUG_TAG, "list_position is " + list_position);
         notifyItemChanged(list_position);
     }
@@ -130,12 +139,14 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView initial;
         private TextView name;
+        private TextView numero;
         private Button deleteButton;
 
         public ViewHolder(View v) {
             super(v);
             initial = (TextView) v.findViewById(R.id.initial);
             name = (TextView) v.findViewById(R.id.name);
+            numero = (TextView) v.findViewById(R.id.numero);
             deleteButton = (Button) v.findViewById(R.id.delete_button);
 
             deleteButton.setOnClickListener(new View.OnClickListener() {
@@ -151,20 +162,24 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.ViewHold
                     Pair<View, String> p1 = Pair.create((View) initial, Usuario.TRANSITION_INITIAL);
                     Pair<View, String> p2 = Pair.create((View) name, Usuario.TRANSITION_NAME);
                     Pair<View, String> p3 = Pair.create((View) deleteButton, Usuario.TRANSITION_DELETE_BUTTON);
+                    Pair<View, String> p4 = Pair.create((View) numero, Usuario.TRANSITION_NUMERO);
 
                     ActivityOptionsCompat options;
                     Activity act = (AppCompatActivity) context;
-                    options = ActivityOptionsCompat.makeSceneTransitionAnimation(act, p1, p2, p3);
+                    options = ActivityOptionsCompat.makeSceneTransitionAnimation(act, p1, p2, p3, p4);
 
                     int requestCode = getAdapterPosition();
                     String name = cardsList.get(requestCode).getName();
+                    String numero = cardsList.get(requestCode).getNumero();
                     int color = cardsList.get(requestCode).getColorResource();
 
                     Log.d(DEBUG_TAG, "SampleMaterialAdapter itemView listener for Edit adapter position " + requestCode);
 
                     Intent transitionIntent = new Intent(context, UsuarioTransitionEdit.class);
                     transitionIntent.putExtra(Usuario.EXTRA_NAME, name);
+                    transitionIntent.putExtra(Usuario.EXTRA_NUMERO, numero);
                     transitionIntent.putExtra(Usuario.EXTRA_INITIAL, Character.toString(name.charAt(0)));
+                    //transitionIntent.putExtra(Usuario.EXTRA_INITIAL, Character.toString(numero.charAt(0)));
                     transitionIntent.putExtra(Usuario.EXTRA_COLOR, color);
                     transitionIntent.putExtra(Usuario.EXTRA_UPDATE, false);
                     transitionIntent.putExtra(Usuario.EXTRA_DELETE, false);

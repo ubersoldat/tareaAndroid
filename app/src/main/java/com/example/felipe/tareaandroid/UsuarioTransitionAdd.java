@@ -18,6 +18,7 @@ import java.util.Random;
 public class UsuarioTransitionAdd extends AppCompatActivity {
 
     private EditText nameEditText;
+    private EditText numeroEditText;
     private TextView initialTextView;
     private int color;
     private Intent intent;
@@ -29,12 +30,13 @@ public class UsuarioTransitionAdd extends AppCompatActivity {
         setContentView(R.layout.activity_usuario_transition_add);
 
         nameEditText = (EditText) findViewById(R.id.name);
+        numeroEditText = (EditText) findViewById(R.id.numero);
         initialTextView = (TextView) findViewById(R.id.initial);
         Button addButton = (Button) findViewById(R.id.add_button);
 
         intent = getIntent();
         int[] colors = getResources().getIntArray(R.array.initial_colors);
-        color = colors[randomGenerator.nextInt(50)];
+        color = colors[randomGenerator.nextInt(10)];
 
         initialTextView.setText("");
         initialTextView.setBackgroundColor(color);
@@ -43,10 +45,27 @@ public class UsuarioTransitionAdd extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (count == 0) {
-                    // add initialTextView
                     initialTextView.setText("");
                 } else if (count == 1) {
-                    // initialTextView set to first letter of nameEditText and add name stringExtra
+                    initialTextView.setText(String.valueOf(s.charAt(0)));
+                }
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+        numeroEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (count == 0) {
+                    initialTextView.setText("");
+                } else if (count == 1) {
                     initialTextView.setText(String.valueOf(s.charAt(0)));
                 }
             }
@@ -63,13 +82,16 @@ public class UsuarioTransitionAdd extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // must not be zero otherwise do not finish activity and report Toast message
                 String text = initialTextView.getText().toString().trim();
-                if (TextUtils.isEmpty(text)) {
-                    Toast.makeText(getApplicationContext(), "Enter a valid name", Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(text) || TextUtils.isEmpty(numeroEditText.getText()) ||
+                        TextUtils.isEmpty(nameEditText.getText())) {
+                    Toast.makeText(getApplicationContext(), "Ingrese un nombre/numero valido", Toast.LENGTH_SHORT).show();
                 } else {
                     intent.putExtra(Usuario.EXTRA_NAME, String.valueOf(nameEditText.getText()));
+                    intent.putExtra(Usuario.EXTRA_NUMERO, String.valueOf(numeroEditText.getText()));
+
                     intent.putExtra(Usuario.EXTRA_INITIAL, String.valueOf(nameEditText.getText().charAt(0)));
+
                     intent.putExtra(Usuario.EXTRA_COLOR, color);
                     setResult(RESULT_OK, intent);
                     supportFinishAfterTransition();
@@ -80,12 +102,9 @@ public class UsuarioTransitionAdd extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == android.R.id.home) {
             super.onBackPressed();
             return true;

@@ -16,6 +16,7 @@ import android.widget.Toast;
 public class UsuarioTransitionEdit extends AppCompatActivity {
 
     private EditText nameEditText;
+    private EditText numeroEditText;
     private TextView initialTextView;
     private Intent intent;
 
@@ -25,17 +26,23 @@ public class UsuarioTransitionEdit extends AppCompatActivity {
         setContentView(R.layout.activity_usuario_transition_edit);
 
         nameEditText = (EditText) findViewById(R.id.name);
+        numeroEditText = (EditText) findViewById(R.id.numero);
         initialTextView = (TextView) findViewById(R.id.initial);
         Button update_button = (Button) findViewById(R.id.update_button);
         Button delete_button = (Button) findViewById(R.id.delete_button);
 
         intent = getIntent();
         String nameExtra = intent.getStringExtra(Usuario.EXTRA_NAME);
+        String numeroExtra = intent.getStringExtra(Usuario.EXTRA_NUMERO);
         String initialExtra = intent.getStringExtra(Usuario.EXTRA_INITIAL);
         int colorExtra = intent.getIntExtra(Usuario.EXTRA_COLOR, 0);
 
         nameEditText.setText(nameExtra);
         nameEditText.setSelection(nameEditText.getText().length());
+
+        numeroEditText.setText(numeroExtra);
+        numeroEditText.setSelection(numeroEditText.getText().length());
+
         initialTextView.setText(initialExtra);
         initialTextView.setBackgroundColor(colorExtra);
 
@@ -43,10 +50,28 @@ public class UsuarioTransitionEdit extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.length() == 0) {
-                    // update initialTextView
                     initialTextView.setText("");
                 } else if (s.length() >= 1) {
-                    // initialTextView set to first letter of nameEditText and update name stringExtra
+                    initialTextView.setText(String.valueOf(s.charAt(0)));
+                    intent.putExtra(Usuario.EXTRA_UPDATE, true);
+                }
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+        numeroEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.length() == 0) {
+                    initialTextView.setText("");
+                } else if (s.length() >= 1) {
                     initialTextView.setText(String.valueOf(s.charAt(0)));
                     intent.putExtra(Usuario.EXTRA_UPDATE, true);
                 }
@@ -64,14 +89,16 @@ public class UsuarioTransitionEdit extends AppCompatActivity {
         update_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // must not be zero otherwise do not finish activity and report Toast message
                 String text = initialTextView.getText().toString().trim();
                 if (TextUtils.isEmpty(text)) {
-                    Toast.makeText(getApplicationContext(), "Enter a valid name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Ingrese un nombre/numero valido", Toast.LENGTH_SHORT).show();
                 } else {
                     intent.putExtra(Usuario.EXTRA_UPDATE, true);
                     intent.putExtra(Usuario.EXTRA_NAME, String.valueOf(nameEditText.getText()));
+                    intent.putExtra(Usuario.EXTRA_NUMERO, String.valueOf(numeroEditText.getText()));
+
                     intent.putExtra(Usuario.EXTRA_INITIAL, String.valueOf(nameEditText.getText().charAt(0)));
+
                     setResult(RESULT_OK, intent);
                     supportFinishAfterTransition();
                 }
@@ -90,12 +117,9 @@ public class UsuarioTransitionEdit extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == android.R.id.home) {
             super.onBackPressed();
             return true;

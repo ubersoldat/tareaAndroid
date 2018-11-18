@@ -4,6 +4,7 @@ public class Card {
     private long id;
     private String name;
     private int color_resource;
+    private String numero;
 
     public long getId() {
         return id;
@@ -21,6 +22,14 @@ public class Card {
         this.name = name;
     }
 
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
     public int getColorResource() {
         return color_resource;
     }
@@ -28,4 +37,5 @@ public class Card {
     public void setColorResource(int color_resource) {
         this.color_resource = color_resource;
     }
+
 }

@@ -21,12 +21,16 @@ public class Usuario extends AppCompatActivity {
     public static final String EXTRA_UPDATE = "update";
     public static final String EXTRA_DELETE = "delete";
     public static final String EXTRA_NAME = "name";
+    //ultimo en  AGREGar
+    public static final String EXTRA_NUMERO = "numero";
     public static final String EXTRA_COLOR = "color";
     public static final String EXTRA_INITIAL = "initial";
 
     public static final String TRANSITION_FAB = "fab_transition";
     public static final String TRANSITION_INITIAL = "initial_transition";
     public static final String TRANSITION_NAME = "name_transition";
+    //ultimo en  AGREGar
+    public static final String TRANSITION_NUMERO = "numero_transition";
     public static final String TRANSITION_DELETE_BUTTON = "delete_button_transition";
 
     private RecyclerView recyclerView;
@@ -35,6 +39,9 @@ public class Usuario extends AppCompatActivity {
     private int[] colors;
     private String[] names;
 
+    //ultimo en  AGREGar
+    private String[] numeros;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +49,7 @@ public class Usuario extends AppCompatActivity {
 
         names = getResources().getStringArray(R.array.names_array);
         colors = getResources().getIntArray(R.array.initial_colors);
+        numeros = getResources().getStringArray(R.array.numeros_array);
 
         initCards();
 
@@ -73,31 +81,28 @@ public class Usuario extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         Log.d(DEBUG_TAG, "requestCode is " + requestCode);
-        // if adapter.getItemCount() is request code, that means we are adding a new position
-        // anything less than adapter.getItemCount() means we are editing a particular position
+
         if (requestCode == adapter.getItemCount()) {
             if (resultCode == RESULT_OK) {
-                // Make sure the Add request was successful
-                // if add name, insert name in list
                 String name = data.getStringExtra(EXTRA_NAME);
+                String numero = data.getStringExtra(EXTRA_NUMERO);
                 int color = data.getIntExtra(EXTRA_COLOR, 0);
-                adapter.addCard(name, color);
+                adapter.addCard(name, numero, color);
             }
         } else {
-            // Anything other than adapter.getItemCount() means editing a particular list item
-            // the requestCode is the list item position
+
             if (resultCode == RESULT_OK) {
-                // Make sure the Update request was successful
+
                 RecyclerView.ViewHolder viewHolder = recyclerView.findViewHolderForAdapterPosition(requestCode);
                 if (data.getExtras().getBoolean(EXTRA_DELETE, false)) {
-                    // if delete user delete
-                    // The user deleted a contact
+
                     adapter.deleteCard(viewHolder.itemView, requestCode);
                 } else if (data.getExtras().getBoolean(EXTRA_UPDATE)) {
-                    // if name changed, update user
+
                     String name = data.getStringExtra(EXTRA_NAME);
+                    String numero = data.getStringExtra(EXTRA_NUMERO);
                     viewHolder.itemView.setVisibility(View.INVISIBLE);
-                    adapter.updateCard(name, requestCode);
+                    adapter.updateCard(name, numero, requestCode);
                 }
             }
         }
@@ -113,7 +118,8 @@ public class Usuario extends AppCompatActivity {
             card.setId((long) i);
             card.setName(names[i]);
             card.setColorResource(colors[i]);
-            Log.d(DEBUG_TAG, "Card created with id " + card.getId() + ", name " + card.getName() + ", color " + card.getColorResource());
+            card.setNumero(numeros[i]);
+            Log.d(DEBUG_TAG, "Card created with id " + card.getId() + ", name " + card.getName() + ", numero " + card.getNumero() + ", color " + card.getColorResource());
             cardsList.add(card);
         }
     }
