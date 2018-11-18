@@ -26,7 +26,7 @@
     <integer-array name="initial_colors">
         <item>@color/blue</item>
         <item>@color/purple</item>
-        <item>@color/Green</item>
+        <item>@color/green</item>
         <item>@color/orange</item>
         <item>@color/red</item>
         <item>@color/indigo</item>
@@ -36,7 +36,7 @@
         <item>@color/pink</item>
         <item>@color/blue</item>
         <item>@color/purple</item>
-        <item>@color/Green</item>
+        <item>@color/green</item>
         <item>@color/orange</item>
         <item>@color/red</item>
         <item>@color/indigo</item>
@@ -46,7 +46,7 @@
         <item>@color/pink</item>
         <item>@color/blue</item>
         <item>@color/purple</item>
-        <item>@color/Green</item>
+        <item>@color/green</item>
         <item>@color/orange</item>
         <item>@color/red</item>
         <item>@color/indigo</item>
@@ -56,7 +56,7 @@
         <item>@color/pink</item>
         <item>@color/blue</item>
         <item>@color/purple</item>
-        <item>@color/Green</item>
+        <item>@color/green</item>
         <item>@color/orange</item>
         <item>@color/red</item>
         <item>@color/indigo</item>
@@ -66,7 +66,7 @@
         <item>@color/pink</item>
         <item>@color/blue</item>
         <item>@color/purple</item>
-        <item>@color/Green</item>
+        <item>@color/green</item>
         <item>@color/orange</item>
         <item>@color/red</item>
         <item>@color/indigo</item>

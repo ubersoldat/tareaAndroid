@@ -48,22 +48,6 @@ public class Imagen extends AppCompatActivity {
         loadPhotosFromWeb();
     }
 
-    private void loadDummyData() {
-        //Armamos un listado de tiulos y URL de foto para probar que ya tenemos el UI
-        // y el Codigo Conectados
-        myDataset = new ArrayList<Photo>();
-        int i = 0;
-        while ( i < 20) {
-            Photo aPhoto = new Photo();
-            aPhoto.setTitle("Titulo " + String.valueOf(i));
-            aPhoto.setImageUrl("http://placehold.it/600/92c952");
-            myDataset.add(aPhoto);
-            i++;
-        }
-
-        //Refrescamos el DATASET en el Adapter
-        refreshDataset();
-    }
 
     private void refreshDataset() {
 

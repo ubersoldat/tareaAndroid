@@ -10,18 +10,20 @@
     <string name="title_activity_transition_add">Añadir Nombre Activity</string>
     <!-- Para interfaz menu-->
     <string name="action_settings">Settings</string>
+    <!-- TOLBAR Mensajes-->
+    <string name="tol_mensaje">Mensajes</string>
 
     <string-array name="names_array">
-        <item>Miguel</item>
-        <item>Juliana</item>
-        <item>Cristobal</item>
-        <item>Amy</item>
-        <item>Jason</item>
-        <item>Melissa</item>
-        <item>David</item>
-        <item>Michelle</item>
-        <item>James</item>
-        <item>Kimberly</item>
+        <item>Bret</item>
+        <item>Antonette</item>
+        <item>Samantha</item>
+        <item>Karianne</item>
+        <item>Kamren</item>
+        <item>Leopoldo_Corkery</item>
+        <item>Elwyn.Skiles</item>
+        <item>Maxime_Nienow</item>
+        <item>Delphine</item>
+        <item>Moriah.Stanton</item>
         <item>Juan</item>
         <item>Lisa</item>
         <item>Roberto</item>

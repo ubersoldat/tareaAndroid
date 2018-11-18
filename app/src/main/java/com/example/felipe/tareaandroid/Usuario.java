@@ -108,7 +108,7 @@ public class Usuario extends AppCompatActivity {
     }
 
     private void initCards() {
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 10; i++) {
             Card card = new Card();
             card.setId((long) i);
             card.setName(names[i]);
